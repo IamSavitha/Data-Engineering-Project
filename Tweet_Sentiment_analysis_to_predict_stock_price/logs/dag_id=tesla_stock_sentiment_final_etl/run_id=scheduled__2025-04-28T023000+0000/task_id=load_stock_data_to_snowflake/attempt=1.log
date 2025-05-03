@@ -1,0 +1,257 @@
+[2025-04-29T03:01:02.879+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-29T03:01:02.893+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [queued]>
+[2025-04-29T03:01:02.901+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [queued]>
+[2025-04-29T03:01:02.903+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-04-29T03:01:02.928+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): load_stock_data_to_snowflake> on 2025-04-28 02:30:00+00:00
+[2025-04-29T03:01:02.944+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=5489) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-29T03:01:02.947+0000] {standard_task_runner.py:72} INFO - Started process 5495 to run task
+[2025-04-29T03:01:02.952+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'tesla_stock_sentiment_final_etl', 'load_stock_data_to_snowflake', 'scheduled__2025-04-28T02:30:00+00:00', '--job-id', '64', '--raw', '--subdir', 'DAGS_FOLDER/tesla_stock_etl.py', '--cfg-path', '/tmp/tmp8k65v9w1']
+[2025-04-29T03:01:02.954+0000] {standard_task_runner.py:105} INFO - Job 64: Subtask load_stock_data_to_snowflake
+[2025-04-29T03:01:03.049+0000] {task_command.py:467} INFO - Running <TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [running]> on host 5891a65dc7e9
+[2025-04-29T03:01:03.201+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='tesla_stock_sentiment_final_etl' AIRFLOW_CTX_TASK_ID='load_stock_data_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2025-04-28T02:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-28T02:30:00+00:00'
+[2025-04-29T03:01:03.204+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-04-29T03:01:04.197+0000] {logging_mixin.py:190} WARNING - [*********************100%***********************]  1 of 1 completed
+[2025-04-29T03:01:04.827+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T03:01:06.378+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T03:01:07.996+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T03:01:07.998+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 266, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tesla_stock_etl.py", line 61, in load_stock_data_to_snowflake
+    raise e
+  File "/opt/airflow/dags/tesla_stock_etl.py", line 54, in load_stock_data_to_snowflake
+    cur.execute(sql)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/cursor.py", line 1087, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 284, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 339, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 215, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 001003 (42000): 01bc0115-0305-14bc-0008-027b00017006: SQL compilation error:
+syntax error line 5 at position 0 unexpected 'TSLA'.
+syntax error line 6 at position 9 unexpected 'dtype'.
+syntax error line 7 at position 0 unexpected 'TSLA'.
+syntax error line 8 at position 9 unexpected 'dtype'.
+syntax error line 9 at position 0 unexpected 'TSLA'.
+syntax error line 10 at position 9 unexpected 'dtype'.
+syntax error line 11 at position 0 unexpected 'TSLA'.
+syntax error line 12 at position 9 unexpected 'dtype'.
+syntax error line 13 at position 0 unexpected 'TSLA'.
+syntax error line 14 at position 9 unexpected 'dtype'.
+[2025-04-29T03:01:08.021+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=tesla_stock_sentiment_final_etl, task_id=load_stock_data_to_snowflake, run_id=scheduled__2025-04-28T02:30:00+00:00, execution_date=20250428T023000, start_date=20250429T030102, end_date=20250429T030108
+[2025-04-29T03:01:08.053+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-04-29T03:01:08.056+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 64 for task load_stock_data_to_snowflake (001003 (42000): 01bc0115-0305-14bc-0008-027b00017006: SQL compilation error:
+syntax error line 5 at position 0 unexpected 'TSLA'.
+syntax error line 6 at position 9 unexpected 'dtype'.
+syntax error line 7 at position 0 unexpected 'TSLA'.
+syntax error line 8 at position 9 unexpected 'dtype'.
+syntax error line 9 at position 0 unexpected 'TSLA'.
+syntax error line 10 at position 9 unexpected 'dtype'.
+syntax error line 11 at position 0 unexpected 'TSLA'.
+syntax error line 12 at position 9 unexpected 'dtype'.
+syntax error line 13 at position 0 unexpected 'TSLA'.
+syntax error line 14 at position 9 unexpected 'dtype'.; 5495)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 266, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tesla_stock_etl.py", line 61, in load_stock_data_to_snowflake
+    raise e
+  File "/opt/airflow/dags/tesla_stock_etl.py", line 54, in load_stock_data_to_snowflake
+    cur.execute(sql)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/cursor.py", line 1087, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 284, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 339, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 215, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 001003 (42000): 01bc0115-0305-14bc-0008-027b00017006: SQL compilation error:
+syntax error line 5 at position 0 unexpected 'TSLA'.
+syntax error line 6 at position 9 unexpected 'dtype'.
+syntax error line 7 at position 0 unexpected 'TSLA'.
+syntax error line 8 at position 9 unexpected 'dtype'.
+syntax error line 9 at position 0 unexpected 'TSLA'.
+syntax error line 10 at position 9 unexpected 'dtype'.
+syntax error line 11 at position 0 unexpected 'TSLA'.
+syntax error line 12 at position 9 unexpected 'dtype'.
+syntax error line 13 at position 0 unexpected 'TSLA'.
+syntax error line 14 at position 9 unexpected 'dtype'.
+[2025-04-29T03:01:08.101+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-04-29T03:01:08.120+0000] {taskinstance.py:3925} ERROR - Error scheduling downstream tasks. Skipping it as this is entirely optional optimisation. There might be various reasons for it, please take a look at the stack trace to figure out if the root cause can be diagnosed and fixed. See the issue https://github.com/apache/***/issues/39717 for details and an example problem. If you would like to get help in solving root cause, open discussion with all details with your managed service support or in Airflow repository.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3921, in schedule_downstream_tasks
+    return TaskInstance._schedule_downstream_tasks(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3870, in _schedule_downstream_tasks
+    partial_dag = task.dag.partial_subset(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 2664, in partial_subset
+    t.task_id: _deepcopy_task(t)
+               ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dag.py", line 2661, in _deepcopy_task
+    return copy.deepcopy(t, memo)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 143, in deepcopy
+    y = copier(memo)
+        ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 1388, in __deepcopy__
+    setattr(result, k, copy.deepcopy(v, memo))
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 136, in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 221, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 136, in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 201, in _deepcopy_tuple
+    y = [deepcopy(a, memo) for a in x]
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 162, in deepcopy
+    y = _reconstruct(x, memo, *rv)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 259, in _reconstruct
+    state = deepcopy(state, memo)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 136, in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 221, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 162, in deepcopy
+    y = _reconstruct(x, memo, *rv)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 259, in _reconstruct
+    state = deepcopy(state, memo)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 136, in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 221, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/copy.py", line 151, in deepcopy
+    rv = reductor(4)
+         ^^^^^^^^^^^
+TypeError: cannot pickle '_thread.lock' object
+[2025-04-29T03:01:08.136+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-04-29T17:28:41.188+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-29T17:28:41.213+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [queued]>
+[2025-04-29T17:28:41.227+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [queued]>
+[2025-04-29T17:28:41.228+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-04-29T17:28:41.250+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): load_stock_data_to_snowflake> on 2025-04-28 02:30:00+00:00
+[2025-04-29T17:28:41.261+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=292) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-29T17:28:41.263+0000] {standard_task_runner.py:72} INFO - Started process 297 to run task
+[2025-04-29T17:28:41.263+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'tesla_stock_sentiment_final_etl', 'load_stock_data_to_snowflake', 'scheduled__2025-04-28T02:30:00+00:00', '--job-id', '71', '--raw', '--subdir', 'DAGS_FOLDER/tesla_stock_etl.py', '--cfg-path', '/tmp/tmp5kt5w0mx']
+[2025-04-29T17:28:41.267+0000] {standard_task_runner.py:105} INFO - Job 71: Subtask load_stock_data_to_snowflake
+[2025-04-29T17:28:41.331+0000] {task_command.py:467} INFO - Running <TaskInstance: tesla_stock_sentiment_final_etl.load_stock_data_to_snowflake scheduled__2025-04-28T02:30:00+00:00 [running]> on host 1f133dc6a737
+[2025-04-29T17:28:41.444+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='tesla_stock_sentiment_final_etl' AIRFLOW_CTX_TASK_ID='load_stock_data_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2025-04-28T02:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-28T02:30:00+00:00'
+[2025-04-29T17:28:41.446+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-04-29T17:28:41.465+0000] {base.py:84} INFO - Retrieving connection 'snowflake_conn'
+[2025-04-29T17:28:41.467+0000] {connection.py:413} INFO - Snowflake Connector for Python Version: 3.12.1, Python Version: 3.12.5, Platform: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2025-04-29T17:28:41.468+0000] {connection.py:1196} INFO - Connecting to GLOBAL Snowflake domain
+[2025-04-29T17:28:41.469+0000] {connection.py:1277} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2025-04-29T17:28:42.458+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T17:28:42.615+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T17:43:56.927+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-29T17:43:56.990+0000] {logging_mixin.py:190} INFO - ✅ Stock data (via Ticker.history) loaded into dev.raw.tesla_stock_data.
+[2025-04-29T17:43:57.033+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-04-29T17:43:57.249+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-04-29T17:43:57.254+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=tesla_stock_sentiment_final_etl, task_id=load_stock_data_to_snowflake, run_id=scheduled__2025-04-28T02:30:00+00:00, execution_date=20250428T023000, start_date=20250429T172841, end_date=20250429T174357
+[2025-04-29T17:43:57.474+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-04-29T17:43:57.719+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-29T17:43:57.723+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

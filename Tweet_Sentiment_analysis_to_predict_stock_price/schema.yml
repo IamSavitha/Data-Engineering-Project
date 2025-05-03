@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: input
+    description: "Transforms raw Tesla and Elon Musk tweet data, does feature engineering, and predicts Tesla's closing stock price using Snowflake ML model."
+    columns:
+      - name: date
+        description: "Date of the tweets and Tesla stock record."
+      - name: sentiment_score
+        description: "Daily VADER sentiment score based on Elon Musk's tweets."
+      - name: weighted_sentiment
+        description: "Weighted sentiment score considering likes and tweet engagement."
+      - name: total_likes
+        description: "Total number of likes across all Elon Musk tweets that day."
+      - name: tweet_count
+        description: "Total number of tweets by Elon Musk that day."
+      - name: open_price
+        description: "Tesla stock opening price of the day."
+      - name: close_price
+        description: "Tesla stock closing price of the day (actual value)."
+      - name: volume
+        description: "Number of Tesla stock shares traded on that day."
+      - name: lag_1_sentiment
+        description: "Sentiment score from the previous day (lag-1 feature)."
+      - name: avg_3d_sentiment
+        description: "3-day moving average of sentiment score."
+      - name: avg_7d_close
+        description: "7-day moving average of Tesla closing price."
+      - name: weighted_tweet_impact
+        description: "Weighted interaction feature between weighted sentiment and tweet count."
+      - name: predicted_close_price
+        description: "Predicted Tesla closing stock price using Snowflake ML model."
+
+  - name: output
+    description: "Final analytics table combining actual and predicted Tesla stock prices, used for visualization and analysis."
+    columns:
+      - name: date
+        description: "Date of record."
+      - name: sentiment_score
+        description: "Daily sentiment score."
+      - name: weighted_sentiment
+        description: "Weighted sentiment based on likes."
+      - name: total_likes
+        description: "Total likes on tweets."
+      - name: tweet_count
+        description: "Number of tweets."
+      - name: actual_close_price
+        description: "Real Tesla stock closing price."
+      - name: predicted_close_price
+        description: "Predicted Tesla closing price."
+      - name: prediction_error
+        description: "Absolute difference between predicted and actual closing prices."
+      - name: open_price
+        description: "Opening price of Tesla stock."
+      - name: volume
+        description: "Total shares traded."

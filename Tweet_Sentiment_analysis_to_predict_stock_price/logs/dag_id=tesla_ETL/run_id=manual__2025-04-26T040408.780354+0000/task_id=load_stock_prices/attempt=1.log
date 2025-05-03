@@ -1,0 +1,16 @@
+[2025-04-26T04:04:20.227+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-26T04:04:20.244+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tesla_ETL.load_stock_prices manual__2025-04-26T04:04:08.780354+00:00 [queued]>
+[2025-04-26T04:04:20.254+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tesla_ETL.load_stock_prices manual__2025-04-26T04:04:08.780354+00:00 [queued]>
+[2025-04-26T04:04:20.255+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-04-26T04:04:20.273+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): load_stock_prices> on 2025-04-26 04:04:08.780354+00:00
+[2025-04-26T04:04:20.285+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=4953) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-26T04:04:20.286+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'tesla_ETL', 'load_stock_prices', 'manual__2025-04-26T04:04:08.780354+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/tesla_stock_etl.py', '--cfg-path', '/tmp/tmp9ya876rj']
+[2025-04-26T04:04:20.287+0000] {standard_task_runner.py:72} INFO - Started process 4956 to run task
+[2025-04-26T04:04:20.287+0000] {standard_task_runner.py:105} INFO - Job 36: Subtask load_stock_prices
+[2025-04-26T04:04:20.343+0000] {task_command.py:467} INFO - Running <TaskInstance: tesla_ETL.load_stock_prices manual__2025-04-26T04:04:08.780354+00:00 [running]> on host 30114da9400b
+[2025-04-26T04:04:20.462+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='tesla_ETL' AIRFLOW_CTX_TASK_ID='load_stock_prices' AIRFLOW_CTX_EXECUTION_DATE='2025-04-26T04:04:08.780354+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-26T04:04:08.780354+00:00'
+[2025-04-26T04:04:20.464+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-04-26T04:04:20.816+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-26T04:04:20.993+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-04-26T04:06:17.087+0000] {local_task_job_runner.py:127} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-04-26T04:06:17.093+0000] {process_utils.py:132} INFO - Sending 15 to group 4956. PIDs of all processes in the group: [4956]
