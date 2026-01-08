@@ -82,7 +82,11 @@ tweet-stock-sentiment-pipeline/
 
 *Note: Replace X and XX with actual metrics from your model evaluation*
 
-## Installation
+## Quick Start
+
+For detailed step-by-step instructions from repository setup to Snowflake data loading, see **[EXECUTION_STEPS.md](EXECUTION_STEPS.md)**.
+
+### Installation
 
 1. Clone the repository:
 ```bash
@@ -188,9 +192,35 @@ Daily Pipeline:
 7. Send alerts/notifications
 ```
 
+## Documentation
+
+- **[EXECUTION_STEPS.md](EXECUTION_STEPS.md)**: Comprehensive step-by-step guide for setting up and executing the pipeline from repository clone to Snowflake data loading
+- **Notebooks**: See `notebooks/exploration.ipynb` for exploratory data analysis and pipeline testing
+
+## Architecture Overview
+
+### Pipeline Flow
+```
+Raw Data (CSV/API) 
+  → Preprocessing (Python: src/preprocessor.py)
+  → Daily Aggregation
+  → Airflow Orchestration (dags/)
+  → Snowflake Raw Layer (dev.raw.*)
+  → dbt Transformations (sentiment_analysis_dbt/)
+  → Snowflake Analytics Layer (dev.input.*, dev.output.*)
+  → Superset Visualization
+```
+
+### Key Components
+- **Data Processing**: Modular Python pipeline for tweet sentiment analysis
+- **Orchestration**: Apache Airflow DAGs for automated ETL/ELT workflows
+- **Transformation**: dbt models for SQL-based feature engineering and analytics
+- **Storage**: Snowflake data warehouse with layered architecture (raw → transformed → analytics)
+- **Visualization**: Superset dashboards for business intelligence
+
 ## Contributing
 
-This is a portfolio project. For questions or suggestions, please open an issue.
+This is a portfolio project demonstrating production-ready data engineering practices. For questions or suggestions, please open an issue.
 
 ## License
 
@@ -198,9 +228,9 @@ This is a portfolio project. For questions or suggestions, please open an issue.
 
 ## Author
 
-[Your Name]
+**Savitha Vijayarangan**
 
 ---
 
-**Note**: This project demonstrates production-ready data engineering practices including modular code structure, proper separation of concerns, and scalability considerations.
+**Note**: This project demonstrates production-ready data engineering practices including modular code structure, proper separation of concerns, and scalability considerations. For detailed execution instructions, refer to [EXECUTION_STEPS.md](EXECUTION_STEPS.md).
 
